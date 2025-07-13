@@ -1,22 +1,38 @@
 % Define all the styles used to produce XDSMs for MDO
 
+% Copied from pyXDSM repo; modified color and font settings
+% reference: https://github.com/mdobook/text/blob/master/figures/mdo/XDSM/diagram_styles.tex
+
 % Tableau 20 color palette, taken from
 % https://jrnold.github.io/ggthemes/reference/tableau_color_pal.html
 % we use the lighter variants here with 80% opacity
 % Blue
-\definecolor{red}{HTML}{A0CBE8}
-% Orange
-\definecolor{orange}{HTML}{FFBE7D}
-% Cyan
-\definecolor{cyan}{HTML}{86BCB6}
-% Green
-\definecolor{green}{HTML}{8CD17D}
-% Yellow
+% \definecolor{blue}{HTML}{A0CBE8}
+% % Orange
+% \definecolor{orange}{HTML}{FFBE7D}
+% % Cyan
+% \definecolor{cyan}{HTML}{86BCB6}
+% % Green
+% \definecolor{green}{HTML}{8CD17D}
+% % Yellow
 \definecolor{yellow}{HTML}{F1CE63}
-% Salmon
-\definecolor{salmon}{HTML}{FF9D9A}
+% % Salmon
+% \definecolor{salmon}{HTML}{FF9D9A}
 
-\tikzstyle{every node}=[font=\sffamily,align=center]
+\definecolor{primarybox}{HTML}{A0CBE8}  % blue
+\definecolor{secondarybox}{HTML}{FF9D9A} % red
+\definecolor{tertiarybox}{HTML}{8CD17D} % green
+\definecolor{bg}{HTML}{ffffff}
+\definecolor{textcolor}{HTML}{000000}
+% \definecolor{lighttext}{HTML}{79706E}
+\definecolor{lighttext}{RGB}{160, 160, 160}
+\definecolor{verylighttext}{RGB}{224, 224, 224}
+
+% TODO: dark gray and gray for Newton and optimizer
+
+% --- modify font ---
+%%% \tikzstyle{every node}=[font=\sffamily,align=center]
+\tikzstyle{every node}=[font=\rmfamily,align=center]
 
 \newcommand{\fillOpacity}{80}
 
@@ -26,13 +42,14 @@
 \newcommand{\procShape}{rounded rectangle}
 
 % Colors
-\newcommand{\explicitColor}{green}
-\newcommand{\implicitColor}{salmon}
-\newcommand{\optimizationColor}{red} % also used by DOE
+\newcommand{\explicitColor}{primarybox}
+\newcommand{\implicitColor}{secondarybox}
+\newcommand{\mdaColor}{verylighttext}
+\newcommand{\optimizationColor}{lighttext} % also used by DOE
 
 % Component types
-\tikzstyle{Optimization} = [\procShape,draw,fill=\optimizationColor!\fillOpacity,inner sep=6pt,minimum height=1cm,text badly centered]
-\tikzstyle{MDA} = [\procShape,draw,fill=orange!\fillOpacity,inner sep=6pt,minimum height=1cm,text badly centered]
+\tikzstyle{Optimization} = [\procShape,draw,fill=\optimizationColor!\fillOpacity,inner sep=6pt,minimum height=1cm,text badly centered]   % white text!
+\tikzstyle{MDA} = [\procShape,draw,fill=\mdaColor!\fillOpacity,inner sep=6pt,minimum height=1cm,text badly centered]
 \tikzstyle{DOE} = [\procShape,draw,fill=\optimizationColor!\fillOpacity,inner sep=6pt,minimum height=1cm,text badly centered]
 \tikzstyle{SubOptimization} = [\groupShape,draw,fill=\optimizationColor!\fillOpacity,inner sep=6pt,minimum height=1cm,text badly centered]
 \tikzstyle{Group} = [\groupShape,draw,fill=\explicitColor!\fillOpacity,inner sep=6pt,minimum height=1cm,text badly centered]
